@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSF I-Corp Chatbot</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background for the whole page */
+            color: #e0e0e0; /* Light text color */
+        }
+        #top-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #top-button a {
+            display: inline-block;
+            font-size: 36px; /* Large font size */
+            color: #ffffff;
+            background-color: #007bff; /* Blue background */
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        #top-button a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        #chat-body {
+            flex: 1;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px;
+            background-color: #1e1e1e; /* Dark background for the chat area */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        .user-message {
+            background-color: #333; /* Darker background for user messages */
+            color: #e0e0e0; /* Light text color */
+            margin-left: auto;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #2c2c2c; /* Slightly lighter background for bot messages */
+            color: #e0e0e0; /* Light text color */
+            margin-right: auto;
+            text-align: left;
+        }
+        #input-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #333;
+            background-color: #1e1e1e; /* Dark background for input area */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+        }
+        #user-input {
+            flex: 1;
+            height: 50px;
+            font-size: 16px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #444; /* Slightly lighter border for input */
+            border-radius: 25px;
+            background-color: #333; /* Dark background for input field */
+            color: #f4eeee; /* Light text color for input */
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+        #user-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        #send-button, #clear-button {
+            height: 50px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 0 20px;
+        }
+        #send-button {
+            background-color: #007bff;
+        }
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+        #clear-button {
+            background-color: #dc3545;
+            margin-left: 10px;
+        }
+        #clear-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div id="top-button">
+        <a href="https://www.ita.ucla.edu/" target="_blank">NSF I-Corp UCLA</a>
+    </div>
+    <div id="chat-body"></div>
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Type your message here" />
+        <button id="send-button">Send</button>
+        <button id="clear-button">Clear Chat</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
