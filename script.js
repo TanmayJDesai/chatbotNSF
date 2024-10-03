@@ -251,13 +251,41 @@ document.getElementById('clear-button').addEventListener('click', clearChat);
 
 /*
 
-ADD: 
+    Structure of the Code
+    Information Objects:
 
-Upcoming national cohorts: access through this link: https://new.nsf.gov/funding/initiatives/i-corps/cohorts
+    info: Contains details about the summer and fall cohorts, including program names, dates, locations, and registration links.
+    icorps_info: Contains detailed information about the I-Corps program, its structure, application process, contact info, and other pertinent information.
+    Chat Functionality:
 
-NSF I-Corp Impact Data: https://new.nsf.gov/funding/initiatives/i-corps/impact-data
+    The function sendMessage() captures user input, processes it to generate a chatbot response using getChatbotResponse(userInput), and updates the chat display with both the user message and the bot response.
+    The clearChat() function clears all messages from the chat interface.
+    Chatbot Response Generation:
 
-NSF I-Corp Alumni Team Highlights: https://new.nsf.gov/funding/initiatives/i-corps/team-highlights
+    getChatbotResponse(userInput): This function checks the user's input for keywords and responds accordingly. For example:
+    If the input contains "icorps," it returns the program description.
+    If it includes "registration," it provides information about how to register.
+    Key Features
+    Cohort Information: The info object provides details about program names, dates, locations, and registration links for both summer and fall cohorts.
+    Program Description: The icorps_info object offers a comprehensive overview of the I-Corps program, its structure (ZAP and BOOM), application details, and contact information.
+    Response Handling: The chatbot can handle a variety of inquiries related to the I-Corps program, responding with specific details based on user questions.
+    Example Interaction
+    Here’s how a typical interaction with the chatbot might unfold:
 
+    User Input: "What is I-Corps?"
+
+    Bot Response: "The U.S. National Science Foundation’s Innovation Corps (I-Corps™) program is an immersive, entrepreneurial training program that facilitates the transformation of invention to impact..."
+
+    User Input: "How do I register?"
+
+    Bot Response: "Information on how to register/form a team can be accessed through this link: National Cohorts"
+
+    Code Improvements
+    Here are a few suggestions for improving the code:
+
+    Input Sanitization: Ensure user inputs are sanitized to avoid any potential issues with unexpected characters or formatting.
+    User Feedback: Consider providing feedback if the user's input doesn't match any keywords, encouraging them to rephrase or ask differently.
+    Accessibility: Make sure the chatbot is accessible, using proper ARIA roles and labels for users with disabilities.
+    Dynamic Content Updates: If the program dates or details change frequently, consider fetching this data from a server or an API rather than hardcoding it.
 
 */
