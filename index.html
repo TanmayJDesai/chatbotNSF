@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NSF I-Corp Chatbot</title>
+    
+    <!-- CSS for styling the chatbot interface -->
     <style>
         body {
             display: flex;
-            flex-direction: column;
-            height: 100vh;
+            flex-direction: column; /* Makes the body layout vertical */
+            height: 100vh; /* Full viewport height */
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; /* Default font style */
             background-color: #121212; /* Dark background for the whole page */
             color: #e0e0e0; /* Light text color */
         }
@@ -20,108 +22,194 @@
         }
         #top-button a {
             display: inline-block;
-            font-size: 36px; /* Large font size */
-            color: #ffffff;
+            font-size: 36px; /* Large font size for the button text */
+            color: #ffffff; /* White text */
             background-color: #007bff; /* Blue background */
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, box-shadow 0.3s;
+            padding: 15px 30px; /* Padding for spacing around text */
+            text-decoration: none; /* Remove underline from the link */
+            border-radius: 10px; /* Rounded corners for the button */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
         }
         #top-button a:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background-color: #0056b3; /* Darker blue when hovered */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
         }
         #chat-body {
-            flex: 1;
-            overflow-y: auto;
-            border-radius: 10px;
-            border: 1px solid #333;
-            padding: 20px;
+            flex: 1; /* Expand chat area to fill available space */
+            overflow-y: auto; /* Enable vertical scrolling */
+            border-radius: 10px; /* Rounded corners */
+            border: 1px solid #333; /* Dark border */
+            padding: 20px; /* Padding inside the chat area */
             margin: 20px;
-            background-color: #1e1e1e; /* Dark background for the chat area */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background-color: #1e1e1e; /* Darker background for chat messages */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect for the chat box */
         }
         .message {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 10px;
-            max-width: 80%;
+            margin: 10px 0; /* Spacing between messages */
+            padding: 10px; /* Padding inside each message */
+            border-radius: 10px; /* Rounded corners */
+            max-width: 80%; /* Limit message width to 80% of the chat area */
         }
         .user-message {
             background-color: #333; /* Darker background for user messages */
             color: #e0e0e0; /* Light text color */
-            margin-left: auto;
-            text-align: right;
+            margin-left: auto; /* Align user messages to the right */
+            text-align: right; /* Text is right-aligned */
         }
         .bot-message {
-            background-color: #2c2c2c; /* Slightly lighter background for bot messages */
+            background-color: #2c2c2c; /* Lighter background for bot messages */
             color: #e0e0e0; /* Light text color */
-            margin-right: auto;
-            text-align: left;
+            margin-right: auto; /* Align bot messages to the left */
+            text-align: left; /* Text is left-aligned */
         }
         #input-container {
-            display: flex;
-            align-items: center;
+            display: flex; /* Arrange input field and buttons in a row */
+            align-items: center; /* Vertically center items */
             padding: 10px;
-            border-top: 1px solid #333;
-            background-color: #1e1e1e; /* Dark background for input area */
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid #333; /* Dark top border for the input area */
+            background-color: #1e1e1e; /* Dark background for the input area */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow at the top of the input area */
         }
         #user-input {
-            flex: 1;
-            height: 50px;
-            font-size: 16px;
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid #444; /* Slightly lighter border for input */
-            border-radius: 25px;
+            flex: 1; /* Input field takes up available space */
+            height: 50px; /* Set height for the input field */
+            font-size: 16px; /* Font size for input text */
+            padding: 10px; /* Padding inside the input field */
+            margin-right: 10px; /* Space between input and send button */
+            border: 1px solid #444; /* Darker border for input */
+            border-radius: 25px; /* Rounded corners for input */
             background-color: #333; /* Dark background for input field */
             color: #f4eeee; /* Light text color for input */
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-            outline: none;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2); /* Inner shadow for a recessed effect */
+            outline: none; /* Remove the default outline */
         }
         #user-input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border-color: #007bff; /* Blue border when input is focused */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glow effect when focused */
         }
         #send-button, #clear-button {
-            height: 50px;
-            font-size: 16px;
-            border: none;
-            border-radius: 25px;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            padding: 0 20px;
+            height: 50px; /* Button height */
+            font-size: 16px; /* Font size for button text */
+            border: none; /* Remove default border */
+            border-radius: 25px; /* Rounded corners */
+            color: #fff; /* White text */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            padding: 0 20px; /* Padding inside buttons */
         }
         #send-button {
-            background-color: #007bff;
+            background-color: #007bff; /* Blue background for send button */
         }
         #send-button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
         }
         #clear-button {
-            background-color: #dc3545;
-            margin-left: 10px;
+            background-color: #dc3545; /* Red background for clear button */
+            margin-left: 10px; /* Space between send and clear buttons */
         }
         #clear-button:hover {
-            background-color: #c82333;
+            background-color: #c82333; /* Darker red on hover */
         }
     </style>
 </head>
 <body>
+    <!-- Top button linking to UCLA NSF I-Corp page -->
     <div id="top-button">
         <a href="https://www.ita.ucla.edu/" target="_blank">NSF I-Corp UCLA</a>
     </div>
+    
+    <!-- Chat body where messages will appear -->
     <div id="chat-body"></div>
+    
+    <!-- Input area containing the text field and buttons -->
     <div id="input-container">
         <input type="text" id="user-input" placeholder="Type your message here" />
         <button id="send-button">Send</button>
         <button id="clear-button">Clear Chat</button>
     </div>
     
+    <!-- Link to external JavaScript file (not included in this HTML) -->
     <script src="script.js"></script>
 </body>
 </html>
+
+<!-- 
+
+    1. Key and Minor Components:
+    DOCTYPE declaration and HTML structure:
+
+    <!DOCTYPE html>: Declares the document type as HTML5.
+    <html lang="en">: Starts the HTML document with English as the language.
+    <head>: Contains metadata about the page (e.g., title, charset, and style).
+    <body>: Holds the visible content of the web page.
+    Metadata and Title:
+
+    <meta charset="UTF-8">: Specifies the character encoding as UTF-8.
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">: Ensures the page scales properly on different devices.
+    <title>NSF I-Corp Chatbot</title>: Sets the page title displayed in the browser tab.
+    CSS Styling (in <style> tag):
+
+    Body styling: Sets up the main layout and design (flexbox layout, dark background, light text, etc.).
+    Button styles: Defines appearance and hover effects for buttons.
+    Chat box (#chat-body) and input container styling: Provides visual structure for messages and input.
+    Message styles: Differentiates between user messages and bot messages by color and alignment.
+    HTML Body Components:
+
+    Top Button (#top-button):
+    <div> with a link (<a>) to the UCLA NSF I-Corp page.
+    Styles the button with a large font, padding, and a hover effect.
+    Chat Body (#chat-body):
+    This is where the chat messages will appear.
+    Input Container (#input-container):
+    A flex container holding the input field and buttons.
+    Contains:
+    #user-input: A text input for typing messages.
+    #send-button: A button to send the typed message.
+    #clear-button: A button to clear the chat.
+    JavaScript File (<script src="script.js"></script>):
+
+    Links to an external JavaScript file (not included in this HTML) where the chat functionality will be handled.
+    2. Code Structure:
+    Head Section:
+
+    This section contains the metadata and CSS styles for the entire page. It includes:
+    Character encoding and viewport settings for responsive design.
+    The page title and a CSS block to style the body, buttons, chat messages, and input area.
+    Body Section:
+
+    This is the main content of the page and consists of three key parts:
+    Top Button: A button that links to the NSF I-Corp page at UCLA.
+    Chat Body: A div where chat messages from both the user and bot will appear.
+    Input Container: Holds the text input and buttons for sending or clearing messages.
+    JavaScript Link:
+
+    A reference to an external JavaScript file (script.js), which will contain the logic to handle chat interactions, sending messages, and clearing the chat.
+    3. Important Details:
+    Flexbox Layout:
+
+    The entire layout is set up using CSS flexbox, which is a powerful tool for arranging elements in a responsive and flexible way.
+    The body is styled with display: flex and flex-direction: column, making the content stack vertically and filling the entire viewport height.
+    Chat Body (#chat-body):
+
+    It is designed to hold chat messages, and the flex: 1 property ensures that it expands to take up available space between the top button and the input area.
+    The overflow-y: auto allows scrolling if the chat becomes too long to fit in the view.
+    The box-shadow and dark color give the chat area a modern look.
+    Buttons:
+
+    Both buttons (Send and Clear Chat) are styled to be rounded and provide visual feedback when hovered (e.g., changing colors and shadows).
+    The transition property adds smoothness to the hover effects.
+    Input Field (#user-input):
+
+    The input field has a placeholder text ("Type your message here") and is styled with rounded corners and a dark background to match the theme.
+    When focused, the input field glows with a blue border and shadow, enhancing user interaction feedback.
+    Message Styles:
+
+    .user-message and .bot-message define how messages from the user and bot are displayed.
+    User messages are aligned to the right with a darker background, while bot messages are aligned to the left with a slightly lighter background for differentiation.
+    Interactivity (via JavaScript):
+
+    Although not included in the HTML, the JavaScript file (script.js) will handle the functionality of sending and displaying chat messages and clearing the chat area. It will likely manipulate the DOM to insert user messages into the #chat-body dynamically.
+    This code provides the structure and styling for a simple chatbot interface, with a dark theme and interactive elements such as buttons and an input field.
+
+ -->
