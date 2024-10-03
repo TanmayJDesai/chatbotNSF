@@ -1,30 +1,32 @@
-
+// Define an object 'info' to store program details for summer and fall cohorts,
+// as well as USC-specific dates for different months
 const info = {
     summer_cohort: {
         program_name: "Summer Cohort (ZAP & BOOM) - Regional Programs Part 1 & 2",
-        dates: [
+        dates: [ // Array of dates for the summer cohort program
             "August 30, 3-6 PM",
             "September 6, 3-6 PM",
             "September 13, 3-6 PM",
             "September 20, 4-6 PM",
             "September 27, 4-6 PM"
         ],
-        location: "UCLA Engineering VI, Room 100",
-        registration_link: "https://forms.gle/Lg4Ud7EzUs5FMdN66"
+        location: "UCLA Engineering VI, Room 100", // Location of the program
+        registration_link: "https://forms.gle/Lg4Ud7EzUs5FMdN66" // Registration link for the summer cohort
     },
     fall_cohort: {
         program_name: "Fall Cohort (ZAP & BOOM) - Regional Programs Part 1 & 2",
-        dates: [
+        dates: [ // Array of dates for the fall cohort program
             "October 24, 3-6 PM",
             "October 31, 3-6 PM",
             "November 7, 3-6 PM",
             "November 14, 4-6 PM",
             "November 21, 4-6 PM"
         ],
-        location: "UCLA Engineering VI, Room 300",
-        registration_link: "https://forms.gle/wujHiKQu1FMnSMX96"
+        location: "UCLA Engineering VI, Room 300", // Location of the fall cohort
+        registration_link: "https://forms.gle/wujHiKQu1FMnSMX96" // Registration link for the fall cohort
     },
     usc_dates: {
+        // Nested arrays for specific dates in September, October, and December for USC programs
         september: [
             "September 3, 4-7 PM",
             "September 10, 4-7 PM",
@@ -43,25 +45,30 @@ const info = {
     }
 };
 
+// Define 'icorps_info' object to hold details about the I-Corps program and its components
 const icorps_info = {
     description: (
+        // Brief description of the I-Corps program and its purpose
         "The I-Corps program was created by the National Science Foundation (NSF) in 2011<br>" +
         "to help transition academic research to the market. The program offers select teams<br>" +
         "the opportunity to participate in a fast-paced and rigorous process that aids in moving<br>" +
         "products from the lab to the market by providing hands-on experience with customer discovery."
     ),
     structure: (
+        // Explanation of the program structure, ZAP and BOOM stages
         "The program consists of two legs: ZAP and BOOM. Teams participate in ZAP individually or as a team,<br>" +
         "online or in-person. Upon completion, selected teams are invited to participate in BOOM, which is<br>" +
         "online-only. After BOOM, teams can apply for a $50,000 market research grant."
     ),
     application: (
+        // Information on how to apply for the program
         "You can apply to the ZAP program. After ZAP, you'll be eligible to participate in BOOM by invitation.<br>" +
         "Successful completion of BOOM qualifies you to apply for a $50,000 market research grant."
     ),
-    contact: "For more information, you can contact us at startup@ita.ucla.edu.",
-    faq: "For additional questions, please consult the I-Corps FAQ.",
+    contact: "For more information, you can contact us at startup@ita.ucla.edu.", // Contact details for inquiries
+    faq: "For additional questions, please consult the I-Corps FAQ.", // Link to FAQ section
     regional_program_info: (
+        // Details about the regional program and what participants will learn
         "The I-Corps Hub West offers a free regional program with courses taught by experienced entrepreneurs.<br>" +
         "Teams or individuals who complete the regional program are eligible to receive lineage and a letter of<br>" +
         "recommendation for the NSF I-Corps National program ($50,000 grant).<br><br>" +
@@ -72,8 +79,9 @@ const icorps_info = {
         "- Identify the real problems the customer needs solved<br>" +
         "- Develop an entrepreneurial mindset"
     ),
-    methodology: "For information about our methodology and selection process, please visit: <a href='https://www.ita.ucla.edu/our-methodology/' target='_blank'>our methodology</a>.",
+    methodology: "For information about our methodology and selection process, please visit: <a href='https://www.ita.ucla.edu/our-methodology/' target='_blank'>our methodology</a>.", // Methodology link
     companies_info: (
+        // Information about some of the companies and projects supported by the I-Corps program
         "Here are some of the supported companies and projects:<br><br>" +
         "- <strong>BruinPatch Inc.</strong>: Developed a solution to extend the lifetime of pothole repairs or match the original pavement's service life.<br>" +
         "- <strong>Cytovale</strong>: Cancer diagnostic instrument that measures cell deformation to detect cancer with high sensitivity.<br>" +
@@ -88,33 +96,36 @@ const icorps_info = {
     )
 };
 
-
+// Function to send a user message and generate a chatbot response
 function sendMessage() {
-    const userInput = document.getElementById('user-input').value.trim();
-    const chatBody = document.getElementById('chat-body');
-    
-    if (userInput) {
-        let response = getChatbotResponse(userInput.toLowerCase());
-        
-        // Display user message
+    const userInput = document.getElementById('user-input').value.trim(); // Get user input and remove extra spaces
+    const chatBody = document.getElementById('chat-body'); // Get the chat body element where messages will appear
+
+    if (userInput) { // Check if user input is not empty
+        let response = getChatbotResponse(userInput.toLowerCase()); // Generate a chatbot response based on user input
+
+        // Add the user's message to the chat body
         chatBody.innerHTML += `<div class="message user-message">${userInput}</div>`;
         
-        // Display chatbot response
+        // Add the chatbot's response to the chat body
         chatBody.innerHTML += `<div class="message bot-message">${response}</div>`;
         
-        // Clear input field
+        // Clear the input field for the next message
         document.getElementById('user-input').value = '';
         
-        // Scroll to the bottom
+        // Scroll to the bottom of the chat body to show the latest message
         chatBody.scrollTop = chatBody.scrollHeight;
     }
 }
 
+// Function to clear the chat messages
 function clearChat() {
-    document.getElementById('chat-body').innerHTML = '';
+    document.getElementById('chat-body').innerHTML = ''; // Clear all messages in the chat body
 }
 
+// Function to generate a chatbot response based on user input
 function getChatbotResponse(userInput) {
+    // Check for specific keywords in the user's input and return appropriate responses
     if (userInput.includes("null") || userInput.includes("void")) {
         return "Information on upcoming national cohorts can be accessed through this link: [National Cohorts](https://new.nsf.gov/funding/initiatives/i-corps/cohorts)"
     } else if (userInput.includes("location") || userInput.includes("where")) {
@@ -222,21 +233,31 @@ function getChatbotResponse(userInput) {
 }
 
 
-
+// Add an event listener to the 'send-button' to trigger the sendMessage function when clicked
 document.getElementById('send-button').addEventListener('click', sendMessage);
+
+// Add an event listener to the 'user-input' field to listen for the 'Enter' key press
 document.getElementById('user-input').addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission if inside a form
-        sendMessage();
+    if (event.key === 'Enter') { // Check if the 'Enter' key was pressed
+        event.preventDefault(); // Prevent the default action (like submitting a form if inside one)
+        sendMessage(); // Call the sendMessage function to process the input
     }
 });
 
+// Add an event listener to the 'clear-button' to trigger the clearChat function when clicked
 document.getElementById('clear-button').addEventListener('click', clearChat);
+
 
 
 /*
 
+ADD: 
 
+Upcoming national cohorts: access through this link: https://new.nsf.gov/funding/initiatives/i-corps/cohorts
+
+NSF I-Corp Impact Data: https://new.nsf.gov/funding/initiatives/i-corps/impact-data
+
+NSF I-Corp Alumni Team Highlights: https://new.nsf.gov/funding/initiatives/i-corps/team-highlights
 
 
 */
