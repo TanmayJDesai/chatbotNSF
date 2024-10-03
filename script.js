@@ -115,37 +115,12 @@ function clearChat() {
 }
 
 function getChatbotResponse(userInput) {
-    if (userInput.includes("dates") || userInput.includes("when")) {
-        return "The cohort dates are as follows:<br><br>"
-                + "Fall Cohort:<br>" + info.fall_cohort.dates.join("<br>") + "<br><br>"
-                + "Summer Cohort:<br>" + info.summer_cohort.dates.join("<br>") + "<br><br>"
-                + "USC Dates (September):<br>" + info.usc_dates.september.join("<br>") + "<br><br>"
-                + "USC Dates (October):<br>" + info.usc_dates.october.join("<br>") + "<br><br>"
-                + "USC Dates (December):<br>" + info.usc_dates.december.join("<br>");
+    if (userInput.includes("null") || userInput.includes("void")) {
+        return "Information on upcoming national cohorts can be accessed through this link: [National Cohorts](https://new.nsf.gov/funding/initiatives/i-corps/cohorts)"
     } else if (userInput.includes("location") || userInput.includes("where")) {
-        return "Meeting Locations:<br><br>"
-                + `Fall Cohort: ${info.fall_cohort.location}<br>`
-                + `Summer Cohort: ${info.summer_cohort.location}`;
+        return "Information on upcoming national cohorts can be accessed through this link: [National Cohorts](https://new.nsf.gov/funding/initiatives/i-corps/cohorts)"
     } else if (userInput.includes("registration") || userInput.includes("sign up") || userInput.includes("register")) {
-        return "Registration Links:<br><br>"
-                + `Fall Cohort: <a href="${info.fall_cohort.registration_link}" target="_blank">${info.fall_cohort.registration_link}</a><br>`
-                + `Summer Cohort: <a href="${info.summer_cohort.registration_link}" target="_blank">${info.summer_cohort.registration_link}</a>`;
-    } else if (userInput.includes("summer cohort")) {
-        return `${info.summer_cohort.program_name}<br><br>`
-                + `Dates:<br>${info.summer_cohort.dates.join("<br>")}<br><br>`
-                + `Location: ${info.summer_cohort.location}<br><br>`
-                + `Registration Link: <a href="${info.summer_cohort.registration_link}" target="_blank">${info.summer_cohort.registration_link}</a>`;
-    } else if (userInput.includes("fall cohort")) {
-        return `${info.fall_cohort.program_name}<br><br>`
-                + `Dates:<br>${info.fall_cohort.dates.join("<br>")}<br><br>`
-                + `Location: ${info.fall_cohort.location}<br><br>`
-                + `Registration Link: <a href="${info.fall_cohort.registration_link}" target="_blank">${info.fall_cohort.registration_link}</a>`;
-    } else if (userInput.includes("usc cohort") || userInput.includes("usc")) {
-        return "USC Cohort Information:<br><br>"
-                + "Dates:<br>"
-                + "September:<br>" + info.usc_dates.september.join("<br>") + "<br><br>"
-                + "October:<br>" + info.usc_dates.october.join("<br>") + "<br><br>"
-                + "December:<br>" + info.usc_dates.december.join("<br>");
+        return "Information on how to register/form a team can be accessed through this link: https://new.nsf.gov/funding/initiatives/i-corps/national-teams-applicants"
     } else if (userInput.includes("icorps") || userInput.includes("i-corps")) {
         return icorps_info.description;
     } else if (userInput.includes("program structure") || userInput.includes("structure")) {
@@ -176,7 +151,7 @@ function getChatbotResponse(userInput) {
         return "Congratulations to all teams that have been accepted into the U.S. National Science Foundation's Innovation Corps (I-Corps™) Teams training program. As you prepare for the program, browse this page for information pertaining to your participation.\n\nPlease expect to receive information on registration seven to eight weeks before the training begins. Each team member will need to register and select your team's name, which is an important part of your entrepreneurial journey.\n\nYou will also receive a welcome letter four weeks out from the start of the training from VentureWell, NSF's curriculum and assessment partner for the I-Corps program. VentureWell will introduce you to your teaching team and provide important information on pre-program homework, the agenda and syllabus, online course management software, and how to connect virtually for meetings.";
     } else if (userInput.includes("training agenda") || userInput.includes("icorps training program") || userInput.includes("what is the icorps training")) {
         return "The agenda for the training program consists of:\n\n- A three and one-half day kickoff session\n- Five weekly half-day sessions\n- A final two-day session, including a lessons learned presentation\n\nThe entire training program lasts seven weeks, and participants are expected to dedicate a minimum of 15 hours per week to the program. The sessions combine instructor and team presentations with active discussion and interaction. The focus of the program is customer discovery, in which teams interview potential customers and industry stakeholders to evaluate the potential product-market fit of their technology and inform their potential business model. By the end of the program, each team is expected to have conducted at least 100 interviews with potential customers and other stakeholders in their proposed target markets. Teams will present their customer discovery results and next steps during a final 'lessons learned' presentation.";
-    } else if (userInput.includes("upcoming national cohorts") || userInput.includes("cohorts") || userInput.includes("next cohorts")) {
+    } else if (userInput.includes("upcoming national cohorts") || userInput.includes("cohorts") || userInput.includes("times") || userInput.includes("dates") || userInput.includes("locations") || userInput.includes("Where") || userInput.includes("where")|| userInput.includes("next cohorts")) {
         return "Upcoming national cohorts can be accessed through this link: [National Cohorts](https://new.nsf.gov/funding/initiatives/i-corps/cohorts)";
     } else if (userInput.includes("impact data") || userInput.includes("nsf icorps impact data")) {
         return "For more information on NSF I-Corp Impact Data, visit: [NSF I-Corp Impact Data](https://new.nsf.gov/funding/initiatives/i-corps/impact-data)";
@@ -261,13 +236,7 @@ document.getElementById('clear-button').addEventListener('click', clearChat);
 
 /*
 
-ADD: 
 
-Upcoming national cohorts: access through this link: https://new.nsf.gov/funding/initiatives/i-corps/cohorts
-
-NSF I-Corp Impact Data: https://new.nsf.gov/funding/initiatives/i-corps/impact-data
-
-NSF I-Corp Alumni Team Highlights: https://new.nsf.gov/funding/initiatives/i-corps/team-highlights
 
 
 */
