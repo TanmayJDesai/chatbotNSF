@@ -288,4 +288,25 @@ document.getElementById('clear-button').addEventListener('click', clearChat);
     Accessibility: Make sure the chatbot is accessible, using proper ARIA roles and labels for users with disabilities.
     Dynamic Content Updates: If the program dates or details change frequently, consider fetching this data from a server or an API rather than hardcoding it.
 
+    For future updates, consider the following areas of improvement or changes in information for the icorps_info:
+
+    NSF Program Updates: As the NSF continuously adapts its programs, you should periodically check for updates regarding the I-Corps structure, such as new funding opportunities, changes in eligibility, or the addition of new stages. For example, monitoring the I-Corps NSF website ensures that the description and program structure remain accurate.
+
+    Funding and Grants: Ensure that the market research grant amount (currently $50,000) is accurate and reflects any changes made by NSF. You can track this on the NSF I-Corps grants page.
+
+    Regional Programs: The regional I-Corps programs might expand or change over time, and their specific curriculum or opportunities might evolve. You can verify current details by visiting regional hubs' websites or the I-Corps Regional page.
+
+    Methodology and Selection Process: Keep track of changes to the I-Corps' selection methodology by following updates on the methodology page or NSF’s main site, especially if new criteria are introduced.
+
+    Company Listings: Update the list of companies supported by I-Corps as new companies emerge from the program or projects evolve. Check the I-Corps Companies page for up-to-date information on notable startups.
+
+    Registration Links: The I-Corps registration and cohort information may change over time. Ensure links to national cohorts, registration processes, and team formation requirements are current. Follow the latest from the NSF I-Corps Applicants page.
+
+    FAQ and Contact Information: Ensure the FAQ section is continually updated based on common questions and clarify contact methods as they evolve. This might include updated email addresses or new methods of inquiry via online forms.
+
+    These regular reviews will ensure that the program's information remains up-to-date and accurate for users.
+
+
+
+
 */
